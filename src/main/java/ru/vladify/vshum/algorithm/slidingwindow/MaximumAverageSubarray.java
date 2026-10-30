@@ -1,4 +1,4 @@
-package ru.vladify.vshum.algorithm.twopointers;
+package ru.vladify.vshum.algorithm.slidingwindow;
 
 import ru.vladify.vshum.algorithm.Utils;
 

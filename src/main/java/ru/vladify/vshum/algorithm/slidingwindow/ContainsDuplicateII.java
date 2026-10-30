@@ -1,4 +1,4 @@
-package ru.vladify.vshum.algorithm.twopointers;
+package ru.vladify.vshum.algorithm.slidingwindow;
 
 import ru.vladify.vshum.algorithm.Utils;
 
@@ -9,6 +9,7 @@ import ru.vladify.vshum.algorithm.Utils;
  */
 public class ContainsDuplicateII {
 
+    //Верное решение снизу
     public static boolean containsNearbyDuplicate(int[] nums, int k) {
 
         return false;

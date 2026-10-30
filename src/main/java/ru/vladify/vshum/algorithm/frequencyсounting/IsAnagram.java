@@ -1,4 +1,6 @@
-package ru.vladify.vshum.algorithm;
+package ru.vladify.vshum.algorithm.frequencyсounting;
+
+import ru.vladify.vshum.algorithm.Utils;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,6 @@
-package ru.vladify.vshum.algorithm;
+package ru.vladify.vshum.algorithm.hashing;
+
+import ru.vladify.vshum.algorithm.Utils;
 
 import java.util.HashSet;
 import java.util.Set;
