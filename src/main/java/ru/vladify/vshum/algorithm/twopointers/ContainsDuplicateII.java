@@ -1,6 +1,7 @@
 package ru.vladify.vshum.algorithm.twopointers;
 
 import ru.vladify.vshum.algorithm.Utils;
+
 /*
 Дан массив nums и число k.
 Верни true, если в массиве есть два разных индекса i и j такие,
@@ -9,8 +10,6 @@ import ru.vladify.vshum.algorithm.Utils;
 public class ContainsDuplicateII {
 
     public static boolean containsNearbyDuplicate(int[] nums, int k) {
-        // Твоё решение
-        int beginIndex;
 
         return false;
     }
@@ -52,4 +51,12 @@ public class ContainsDuplicateII {
                 false
         );
     }
+
+/* решение */
+//        HashSet<Integer> watchedWindow = new LinkedHashSet<>();
+//        for (int i = 0; i < nums.length; i++) {
+//            if(!watchedWindow.add(nums[i])){  return true; }
+//            if(i >= k){  watchedWindow.remove(nums[i - k]); }
+//        }
+//        return false;
 }
