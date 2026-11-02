@@ -2,33 +2,113 @@ package ru.vladify.vshum.algorithm.frequencyсounting;
 
 import ru.vladify.vshum.algorithm.Utils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ValidAnagram {
 
-    public static boolean isAnagram(String s, String t) {
-        // Твоё решение
-
+    //Решение снизу
+    public static boolean isAnagram2(String s, String t) {
         return false;
     }
 
+
     public static void main(String[] args) {
-        String s1 = "anagram";
-        String t1 = "nagaram";
-        Utils.runTest(s1, t1, isAnagram(s1, t1), true);
+        Utils.runTest(
+                "Анаграмма",
+                isAnagram("anagram", "nagaram"),
+                true
+        );
 
-        String s2 = "rat";
-        String t2 = "car";
-        Utils.runTest(s2, t2, isAnagram(s2, t2), false);
+        Utils.runTest(
+                "Разные буквы",
+                isAnagram("rat", "car"),
+                false
+        );
 
-        String s3 = "aacc";
-        String t3 = "ccac";
-        Utils.runTest(s3, t3, isAnagram(s3, t3), false);
+        Utils.runTest(
+                "Разная длина",
+                isAnagram("ab", "a"),
+                false
+        );
 
-        String s4 = "";
-        String t4 = "";
-        Utils.runTest(s4, t4, isAnagram(s4, t4), true);
+        Utils.runTest(
+                "Одинаковые строки",
+                isAnagram("abc", "abc"),
+                true
+        );
 
-        String s5 = "listen";
-        String t5 = "silent";
-        Utils.runTest(s5, t5, isAnagram(s5, t5), true);
+        Utils.runTest(
+                "Одна одинаковая буква",
+                isAnagram("a", "a"),
+                true
+        );
+
+        Utils.runTest(
+                "Одна разная буква",
+                isAnagram("a", "b"),
+                false
+        );
+
+        Utils.runTest(
+                "Повторяющиеся буквы — анаграмма",
+                isAnagram("aabbc", "bacab"),
+                true
+        );
+
+        Utils.runTest(
+                "Одинаковый набор букв, разное количество",
+                isAnagram("aabb", "abbb"),
+                false
+        );
+
+        Utils.runTest(
+                "Обратный порядок",
+                isAnagram("abcd", "dcba"),
+                true
+        );
+
+        Utils.runTest(
+                "Крайние буквы алфавита",
+                isAnagram("aazz", "zaza"),
+                true
+        );
+    }
+//    public static boolean isAnagramSolution(String s, String t) {
+//
+//        // Твоё решение
+//        if(s.length() != t.length()){ return false; }
+//        Map<Character, Integer> word1Map = new HashMap<>();
+//        Map<Character, Integer> word2Map = new HashMap<>();
+//        for (int i = 0; i < s.length(); i++) {
+//            word1Map.computeIfPresent(s.charAt(i), (c, n) -> ++n);
+//            word1Map.putIfAbsent(s.charAt(i), 1);
+//
+//            word2Map.computeIfPresent(t.charAt(i), (c, n) -> ++n);
+//            word2Map.putIfAbsent(t.charAt(i), 1);
+//
+//        }
+//        return word1Map.equals(word2Map);
+//    }
+
+
+    public static boolean isAnagram(String s, String t) {
+
+        if(s.length() != t.length()){ return false; }
+        Map<Character, Integer> wordsAggregation = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            char sChar = s.charAt(i);
+            char tChar = t.charAt(i);
+
+            wordsAggregation.put(sChar, wordsAggregation.getOrDefault(sChar, 0) + 1);
+            wordsAggregation.put(tChar, wordsAggregation.getOrDefault(tChar, 0) - 1);
+        }
+
+        for (int count : wordsAggregation.values()) {
+            if (count != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }

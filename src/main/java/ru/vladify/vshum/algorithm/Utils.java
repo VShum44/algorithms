@@ -98,4 +98,19 @@ public final class Utils {
                         + " -> " + (passed ? "OK" : "FAIL")
         );
     }
+
+    public static void runTest(
+            String testName,
+            String actual,
+            String expected
+    ) {
+        boolean passed = java.util.Objects.equals(actual, expected);
+
+        System.out.println(
+                testName
+                        + " | ожидалось: \"" + expected + "\""
+                        + ", получено: \"" + actual + "\""
+                        + " -> " + (passed ? "OK" : "FAIL")
+        );
+    }
 }
