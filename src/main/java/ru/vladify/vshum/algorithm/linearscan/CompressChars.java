@@ -21,7 +21,7 @@ import ru.vladify.vshum.algorithm.Utils;
  */
 public class CompressChars {
     public static String compress(char[] chars) {
-        // Твоё решение
+
         return "";
     }
 
@@ -80,4 +80,34 @@ public class CompressChars {
                 "A2a2A"
         );
     }
+
+    // РЕШЕНИЕ
+//    StringBuilder builtResult = new StringBuilder();
+//        if (chars.length == 0) {
+//            return builtResult.toString();
+//        }
+//
+//        int counter = 1;
+//        for (int i = 1; i < chars.length; i++) {
+//
+//            char c = chars[i];
+//            char prevChar  = chars[i - 1];
+//
+//            if (c == prevChar) {
+//                counter++;
+//            } else if (counter > 1) {
+//                builtResult.append(prevChar).append(counter);
+//                counter = 1;
+//            } else {
+//                builtResult.append(prevChar );
+//            }
+//        }
+//
+//        builtResult.append(chars[chars.length - 1]);
+//        if (counter > 1) {
+//            builtResult.append(counter);
+//        }
+//
+//        return builtResult.toString();
+
 }
