@@ -2,6 +2,8 @@ package ru.vladify.vshum.algorithm.frequencyсounting;
 
 import ru.vladify.vshum.algorithm.Utils;
 
+import java.util.*;
+
 /*
 Дан массив целых чисел nums и положительное число k.
 
@@ -35,7 +37,18 @@ public class LimitOccurrences {
 
     public static int[] limitOccurrences(int[] nums, int k) {
 
-        return new int[0];
+        Map<Integer, Integer> numCounts = new HashMap<>();
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            int num = nums[i];
+            Integer prevPutVal = numCounts.put(num, numCounts.getOrDefault(num, 1) + 1);
+            if (prevPutVal == null || prevPutVal <= k) {
+                result.add(num);
+            }
+
+        }
+
+        return result.stream().mapToInt(Integer::intValue).toArray();
     }
 
     public static void main(String[] args) {
