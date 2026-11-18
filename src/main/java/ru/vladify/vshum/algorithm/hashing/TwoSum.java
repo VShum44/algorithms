@@ -24,20 +24,19 @@ public class TwoSum {
 //    }
 
         public static int[] twoSum(int[] nums, int target) {
-            HashMap<Integer, Integer> watched = new HashMap<>();
+
+            HashMap<Integer, Integer> indexByValue  = new HashMap<>();
             for (int i = 0; i < nums.length; i++) {
-                int num = nums[i];
-                int needed  = target - num;
-                if(watched.containsKey(needed)){
-                    return new int[] {watched.get(needed ), i};
+                int curr = nums[i];
+                int potentialNum = target - curr;
+                if(indexByValue .containsKey(potentialNum)){
+                    return new int []{i, indexByValue .get(potentialNum)};
                 }
-                else {
-                    watched.put(num, i);
-                }
+                indexByValue .put(curr, i);
             }
 
-        return new int[0];
-    }
+            throw new IllegalArgumentException("No two elements sum to target");
+        }
 
     public static void main(String[] args) {
         runTest(new int[]{2, 7, 11, 15}, 9);
@@ -94,5 +93,19 @@ public class TwoSum {
 
         return null;
     }
+
+//    HashMap<Integer, Integer> watched = new HashMap<>();
+//            for (int i = 0; i < nums.length; i++) {
+//        int num = nums[i];
+//        int needed = target - num;
+//        if(watched.containsKey(needed)){
+//            return new int[] {watched.get(needed ), i};
+//        }
+//        else {
+//            watched.put(num, i);
+//        }
+//    }
+//
+//        return new int[0];
 
 }
